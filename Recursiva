@@ -1,0 +1,48 @@
+import java.util.Random;
+
+/**
+ *
+ * @author evio
+ */
+public class Baguetti {
+
+    public static void popula_matriz(int matriz[][]) {
+        Random r = new Random();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = r.nextInt(100);
+            }
+
+        }
+
+    }
+
+   
+     public static int  somarArrayRec(int a[][],int indexLinha,int indexColuna,int somar){
+		int somatorio = a[indexLinha][indexColuna]+somar;
+		   if(indexLinha < a.length-1 ){
+		    	return somarArrayRec(a,indexLinha+1,indexColuna,somatorio);
+		    }else{
+		    	indexLinha=0;
+		    	if(indexColuna < a[indexLinha].length-1){
+		    	   return somarArrayRec(a,indexLinha,indexColuna+1,somatorio);
+		    	}
+	  }
+      return somatorio;	
+	}
+
+    public static void main(String[] args) {
+        int matriz[][] = new int[3][3];
+        
+        popula_matriz(matriz);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(" "+matriz[i][j]);
+            }
+        }
+        System.out.println("\n");
+        System.out.println(""+somarArrayRec(matriz,0,0,0));
+    }
+
+}
